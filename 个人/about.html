@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 | 冯宸祎</title>
+    <link rel="stylesheet" href="../个人/css/style.css">
+    <style>
+        /* 页面专属样式，使用CSS变量保持主题一致性 */
+        :root {
+            --primary: #4a6cf7;
+            /* 主色调 */
+            --dark: #1e293b;
+            /* 深色文本 */
+            --light: #f8fafc;
+            /* 浅色背景 */
+            --muted: #64748b;
+            /* 浅色文本 */
+        }
+
+        .about-page {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .profile-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: auto;
+            /* 让图片高度自适应，保持宽高比 */
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            /* 按比例缩放并裁剪，填满容器 */
+        }
+
+        .pic-desc {
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+        .pic-desc p {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .pic-desc span {
+            color: var(--muted);
+        }
+
+        .personal-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        /* 个人信息表格样式，使用HTML5表格元素 */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        .info-table th,
+        .info-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 500;
+        }
+
+        .info-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .personality,
+        .hobbies-intro {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+            }
+
+            .info-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        /* 页眉样式 */
+        header {
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: all 0.3s;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s, transform 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                background-color: white;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+                padding: 60px 30px 30px;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 页眉 -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa fa-user"></i>
+                <span>冯宸祎</span>
+            </div>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="../个人/index.html">首页</a></li>
+                    <li><a href="../个人/about.html" class="active">关于我</a></li>
+                    <li><a href="../个人/hobbies.html">爱好</a></li>
+                    <li><a href="../个人/hometown.html">我的家乡</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 关于我主体内容 -->
+    <section class="about-page">
+        <div class="container">
+            <h2 class="section-title">关于我</h2>
+            <div class="profile-container">
+                <!-- 图片 + 说明区域 -->
+                <div>
+                    <img src="../个人/images/profile1.png" alt="个人照片" class="profile-pic">
+                    <div class="pic-desc">
+                        <p>生活碎片 | 游戏与阅读的交响</p>
+                        <span>窗外雨幕如《最后的精灵》里淹没世界的洪水。书页上，约许正用体温守护暴雨中的龙蛋——“世界越荒诞，越要相信微光的重量”。昨夜《饥荒》雷暴季的闪电还在视网膜残留：我和队友顶着狂掉的SAN值，在漏雨的帐篷旁抢修避雷针，火花四溅中抢救那颗濒死的“龙果”。雨声渐歇，咬下冰箱里最后一颗酸涩的草莓，窗台雨珠映着暮色，像呼吸的龙蛋，也像屏幕里劫后余生的饱满果实。原来绝望与希望，不过是现实版的避雷针与怀中龙蛋——在倾覆的世界里，固执地护住一点甜。</span>
+                    </div>
+                </div>
+                <!-- 个人信息区域 -->
+                <div class="personal-info">
+                    <h2>个人简介</h2>
+                    <p>我是中南财经政法大学信息管理与信息系统专业的学生，来自贵州省。目前专注于Web前端开发学习，希望用代码实现创意游戏想法。</p>
+
+                    <h2>个人信息</h2>
+                    <table class="info-table">
+                        <tr>
+                            <th>姓名</th>
+                            <td>冯宸祎</td>
+                        </tr>
+                        <tr>
+                            <th>学校</th>
+                            <td>中南财经政法大学</td>
+                        </tr>
+                        <tr>
+                            <th>专业</th>
+                            <td>信息管理与信息系统</td>
+                        </tr>
+                        <tr>
+                            <th>籍贯</th>
+                            <td>贵州</td>
+                        </tr>
+                        <tr>
+                            <th>学习ing</th>
+                            <td>Web前端开发</td>
+                        </tr>
+                        <tr>
+                            <th>联系方式</th>
+                            <td>1424061929@qq.com</td>
+                        </tr>
+                    </table>
+
+                    <h2>个人性格</h2>
+                    <div class="personality">
+                        <p>我性格开朗外向，喜欢与人交流合作，同时也享受独立思考的时间。在学习和生活中，我始终保持积极向上的态度，面对挑战时善于分析问题并寻找解决方案。</p>
+                        <p>作为一名工科学生，我兼具逻辑思维和创造力，既注重代码的严谨性，也追求界面的美观和用户体验的流畅性。</p>
+                    </div>
+
+                    <h2>我的爱好</h2>
+                    <div class="hobbies-intro">
+                        <p>在课余时间，我喜欢通过游戏和阅读放松身心。游戏让我体验不同的世界和故事，而阅读则拓宽我的视野和思维方式。这些爱好也间接培养了我的创造力和想象力，对前端设计很有帮助。</p>
+                        <p>此外，我还喜欢探索新的技术和工具，经常在GitHub上学习优秀项目的代码，不断提升自己的开发能力。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>关于我</h3>
+                <p>中南财经政法大学学生，来自贵州的软件爱好者。</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa fa-github"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-email"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>快速链接</h3>
+                <ul class="footer-links">
+                    <li><a href="../个人/index.html">首页</a></li>
+                    <li><a href="../个人/about.html">关于我</a></li>
+                    <li><a href="../个人/hobbies.html">爱好</a></li>
+                    <li><a href="../个人/hometown.html">我的家乡</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系方式</h3>
+                <ul class="footer-links">
+                    <li><i class="fa fa-envelope"></i> 1424061929@qq.com</li>
+                    <li><i class="fa fa-phone"></i> +86 187 XXXX 0058</li>
+                    <li><i class="fa fa-map-marker"></i> 湖北省武汉市中南财经政法大学</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 冯宸祎. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 交互逻辑脚本 -->
+    <script>
+        // 移动端菜单切换
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // 移动端点击后关闭菜单
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的家乡 | 冯宸祎</title>
+    <link rel="stylesheet" href="../个人/css/style.css">
+    <style>
+        /* 家乡页面专属样式，使用Flexbox和Grid布局 */
+        .hometown-page {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .hometown-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .hometown-header h1 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .hometown-header p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hometown-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+        
+        .intro-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .intro-text p {
+            color: var(--muted);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .intro-image {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .hometown-image {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .hometown-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .feature-card {
+            background-color: #f5f7fa;
+            border-radius: 8px;
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-card p {
+            color: var(--muted);
+        }
+        
+        .hometown-culture {
+            background-color: #f0f7ff;
+            padding: 60px 0;
+            margin-bottom: 80px;
+        }
+        
+        .culture-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .culture-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .culture-text p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+        
+        .culture-list {
+            list-style: none;
+        }
+        
+        .culture-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .culture-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .hometown-intro, .culture-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hometown-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa fa-user"></i>
+                <span>冯宸祎</span>
+            </div>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="../个人/index.html">首页</a></li>
+                    <li><a href="../个人/about.html">关于我</a></li>
+                    <li><a href="../个人/hobbies.html">爱好</a></li>
+                    <li><a href="../个人/hometown.html" class="active">我的家乡</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="hometown-page">
+        <div class="container">
+            <div class="hometown-header">
+                <h1>我的家乡 - 贵州</h1>
+                <p>贵州省位于中国西南部，是一个山川秀丽、气候宜人、民族众多、资源富集、发展潜力巨大的省份</p>
+            </div>
+            
+            <h2 class="section-title">贵州简介</h2>
+            <div class="hometown-intro">
+                <div class="intro-text">
+                    <h2>山水贵州</h2>
+                    <p>贵州素有"八山一水一分田"之说，多样的地貌造就了丰富的自然景观。这里气候温和湿润，属亚热带湿润季风气候，年平均气温15℃左右，是理想的避暑胜地。</p>
+                    <p>作为中国唯一没有平原支撑的省份，贵州的山地风光独具特色。黄果树瀑布、荔波小七孔、梵净山等自然景观闻名中外，吸引着无数游客前来观光游览。</p>
+                    
+                    <h2>多彩贵州</h2>
+                    <p>贵州是一个多民族聚居的省份，有苗族、布依族、侗族等18个世居少数民族。各民族独特的风俗习惯和民族文化，使贵州的文化景观更加丰富多彩。</p>
+                    <p>民族节日"四月八"、"六月六"等充满了浓郁的民族风情，苗族的银饰、侗族的鼓楼和大歌都是贵州宝贵的文化遗产。</p>
+                </div>
+                <div class="intro-image">
+                    <img src="../个人/images/guizhou4.jpg" alt="贵州风光" class="hometown-image">
+                    <img src="../个人/images/guizhou2.jpg" alt="贵州民族文化" class="hometown-image">
+                </div>
+            </div>
+            
+            <h2 class="section-title">贵州特色</h2>
+            <div class="hometown-features">
+                <div class="feature-card">
+                    <h3><i class="fa fa-tree" style="color: var(--primary);"></i> 自然景观</h3>
+                    <p>黄果树瀑布是中国最大的瀑布，荔波小七孔被誉为"地球腰带上的绿宝石"，梵净山是世界自然遗产，这些景观展现了贵州独特的喀斯特地貌。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fa fa-users" style="color: var(--primary);"></i> 民族文化</h3>
+                    <p>贵州有18个世居少数民族，各民族保留了独特的语言、服饰、建筑和节日，如苗族的银饰制作、侗族的大歌和鼓楼建筑技艺。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fa fa-utensils" style="color: var(--primary);"></i> 特色美食</h3>
+                    <p>贵州美食以酸辣为主，酸汤鱼、肠旺面、丝娃娃等特色小吃闻名遐迩，茅台镇的茅台酒更是中国名酒，被誉为"国酒"。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fa fa-cloud" style="color: var(--primary);"></i> 气候环境</h3>
+                    <p>贵州气候温和湿润，年平均气温15℃左右，夏季凉爽，冬季温暖，空气质量优良，是理想的宜居和避暑胜地。</p>
+                </div>
+            </div>
+            
+
+            <h2 class="section-title">民族文化</h2>
+            <div class="hometown-culture">
+                <div class="container">
+                    <div class="culture-container">
+                         <div class="culture-text">
+                            <h2>多彩的民族风情</h2>
+                            <p>贵州是一个多民族聚居的省份，各民族在长期的历史发展过程中，形成了各具特色的民族文化和风俗习惯。这些文化不仅是贵州的宝贵财富，也是中华文化的重要组成部分。</p>
+                            <p>民族节日是民族文化的重要表现形式，贵州的民族节日丰富多彩，有苗族的"四月八"、布依族的"六月六"、侗族的"花炮节"等，每个节日都充满了浓郁的民族风情。</p>
+                            <h3 style="font-size: 1.3rem; margin-top: 30px; color: var(--dark);">特色文化元素</h3>
+                             <ul class="culture-list">
+                                <li>苗族银饰：精美的银饰制作技艺，具有极高的艺术价值</li>
+                                <li>侗族大歌：无伴奏多声部合唱，被列入世界非物质文化遗产</li>
+                                <li>苗族蜡染：传统印染技艺，图案精美，具有独特的民族风格</li>
+                                <li>侗族鼓楼：木质结构建筑，是侗族文化的重要象征</li>
+                                <li>苗族吊脚楼：适应山地环境的特色民居建筑</li>
+                            </ul>
+                        </div>
+                        
+                          <div class="culture-image">
+                            <img 
+                            src="../个人/images/guizhou3.jpg" 
+                            alt="贵州民族文化" 
+                            class="hometown-image" 
+                            style="
+                            width: 100%; 
+                             height: 350px; 
+                             object-fit: cover; 
+                             border-radius: 8px; 
+                             transition: transform 0.3s, box-shadow 0.3s;
+                             cursor: pointer;
+                             display: flex;
+                             justify-content: center;
+                             "
+                             onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.2)'"
+                             onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)'"
+                             >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="hometown-summary" style="text-align: center; margin-top: 80px;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--dark);">我与家乡的联系</h3>
+                <p>贵州的山水养育了我，多彩的民族文化熏陶了我。虽然现在在外求学，但家乡的一切始终是我成长的根基。</p>
+                <p>每次回家，我都会被家乡的变化所震撼，从基础设施的完善到旅游业的发展，贵州正在越来越好。作为贵州人，我也希望能用自己的专业知识，为家乡的发展贡献一份力量。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>关于我</h3>
+                <p>中南财经政法大学学生，专注Web前端开发，来自贵州的技术爱好者。</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa fa-github"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-email"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>快速链接</h3>
+                <ul class="footer-links">
+                    <li><a href="../个人/index.html">首页</a></li>
+                    <li><a href="../个人/about.html">关于我</a></li>
+                    <li><a href="../个人/hobbies.html">爱好</a></li>
+                    <li><a href="../个人/hometown.html">我的家乡</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系方式</h3>
+                <ul class="footer-links">
+                    <li><i class="fa fa-envelope"></i> 1424061929@qq.com</li>
+                    <li><i class="fa fa-phone"></i> +86 187 XXXX 0058</li>
+                    <li><i class="fa fa-map-marker"></i> 湖北省武汉市中南财经政法大学</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 你的姓名. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单交互逻辑，使用事件委托优化性能
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+        
+        // 平滑滚动功能，使用requestAnimationFrame优化性能
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

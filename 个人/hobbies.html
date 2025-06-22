@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的爱好 | 冯宸祎</title>
+    <link rel="stylesheet" href="../个人/css/style.css">
+    <style>
+        /* 爱好页面专属样式，使用Grid布局展示内容 */
+        .hobbies-page {
+            padding: 100px 0;
+            background-color: #f5f7fa;
+        }
+        
+        .hobbies-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .hobby-category {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .category-header {
+            padding: 30px;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .category-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .category-content {
+            padding: 30px;
+        }
+        
+        .game-list, .book-list {
+            list-style: none;
+        }
+        
+        .game-item, .book-item {
+            margin-bottom: 25px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .hobby-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .hobby-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .hobby-info p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .hobbies-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .game-item, .book-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .hobby-image {
+                width: 100%;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fa fa-user"></i>
+                <span>冯宸祎</span>
+            </div>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="../个人/index.html">首页</a></li>
+                    <li><a href="../个人/about.html">关于我</a></li>
+                    <li><a href="../个人/hobbies.html" class="active">爱好</a></li>
+                    <li><a href="../个人/hometown.html">我的家乡</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="hobbies-page">
+        <div class="container">
+            <h2 class="section-title">我的爱好</h2>
+            <div class="hobbies-container">
+                <!-- 游戏爱好板块，使用Grid布局分栏 -->
+                <div class="hobby-category">
+                    <div class="category-header">
+                        <h2>喜欢的游戏</h2>
+                        <p>这些游戏陪伴我度过了许多课余时间，它们的故事和玩法给了我很多灵感</p>
+                    </div>
+                    <div class="category-content">
+                        <ul class="game-list">
+                            <li class="game-item">
+                                <img src="../个人/images/game1.png" alt="游戏图片" class="hobby-image">
+                                <div class="hobby-info">
+                                    <h3>CSGO</h3>
+                                    <p>枪火交响的战术沙盘，弹道轨迹与心跳共振的感官战场，每一帧阴影都是生死博弈的无声诗篇。</p>
+                                </div>
+                            </li>
+                            <li class="game-item">
+                                <img src="../个人/images/game2.jpg" alt="游戏图片" class="hobby-image">
+                                <div class="hobby-info">
+                                    <h3>饥荒</h3>
+                                    <p>荒诞手绘编织的生存诗篇，每一次死亡都是向深渊投去的倔强火把，在永夜与饥寒中丈量人性的韧度。</p>
+                                </div>
+                            </li>
+                            <li class="game-item">
+                                <img src="../个人/images/game3.png" alt="游戏图片" class="hobby-image">
+                                <div class="hobby-info">
+                                    <h3>幽浮2</h3>
+                                    <p>策略战棋的硬核巅峰，场景破坏与战术隐匿交织的战场艺术，每一局都是人类绝境反击的史诗交响。</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 书籍爱好板块，使用Grid布局分栏 -->
+                <div class="hobby-category">
+                    <div class="category-header" style="background-color: var(--secondary);">
+                        <h2>喜欢的书籍</h2>
+                        <p>阅读是我拓展视野的重要方式，这些书籍给了我很多思考和启发</p>
+                    </div>
+                    <div class="category-content">
+                        <ul class="book-list">
+                            <li class="book-item">
+                                <img src="../个人/images/book1.jpg" alt="书籍图片" class="hobby-image">
+                                <div class="hobby-info">
+                                    <h3>百年孤独</h3>
+                                    <p>魔幻现实主义的百年史诗，布恩迪亚家族七代人宿命般的轮回与挣扎，马孔多的每一阵飓风都裹挟着拉丁美洲的血泪与孤独。</p>
+                                </div>
+                            </li>
+                            <li class="book-item">
+                                <img src="../个人/images/book2.jpg" alt="书籍图片" class="hobby-image">
+                                <div class="hobby-info">
+                                    <h3>三体</h3>
+                                    <p>宇宙尺度的文明博弈，从“黑暗森林”法则到“二向箔”的降维打击，每个质子都倒映着人性在存亡绝境前的深渊光芒。</p>
+                                </div>
+                            </li>
+                            <li class="book-item">
+                                <img src="../个人/images/book3.jpg" alt="书籍图片" class="hobby-image">
+                                <div class="hobby-info">
+                                    <h3>最后的精灵</h3>
+                                    <p>献给成年人的治愈童话，精灵约许与最后的龙在末日暴雨中守护微光，每一次天真的坚持都是对人性荒原的温柔叛离。</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hobby-summary" style="margin-top: 60px; text-align: center;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--dark);">爱好与我的联系</h3>
+                <p>课余的微光里，我栖身于游戏叙事的星河与书页叠砌的巴别塔。虚拟的茧房孵化万千未诞生的世界，而文字的罗盘总在思维边境刻下新的坐标。当想象力汲取这双重源流的滋养，便在前路悄然生长为藤蔓——终将攀援至我亲手铸造的、属于未来游戏的史诗穹顶</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-section">
+                <h3>关于我</h3>
+                <p>中南财经政法大学学生，专注Web前端开发，来自贵州的技术爱好者。</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa fa-github"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-email"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>快速链接</h3>
+                <ul class="footer-links">
+                    <li><a href="../个人/index.html">首页</a></li>
+                    <li><a href="../个人/about.html">关于我</a></li>
+                    <li><a href="../个人/hobbies.html">爱好</a></li>
+                    <li><a href="../个人/hometown.html">我的家乡</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系方式</h3>
+                <ul class="footer-links">
+                    <li><i class="fa fa-envelope"></i> 1424061929@qq.com</li>
+                    <li><i class="fa fa-phone"></i> +86 187 XXXX 0058</li>
+                    <li><i class="fa fa-map-marker"></i> 湖北省武汉市中南财经政法大学</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 冯宸祎. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单交互逻辑，与其他页面保持一致
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // 平滑滚动功能，使用HTML5的scrollTo API
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
